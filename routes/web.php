@@ -19,8 +19,19 @@ Route::get('/',[HomeController::class, 'index']);
 Route::get('redirectes',[HomeController::class, 'redirectes']);
 Route::get('/users',[AdminController::class, 'user']);
 Route::get('/deleteuser/{id}',[AdminController::class, 'deleteuser']);
-Route::get('/foodMenu',[AdminController::class, 'foodMenu']);
+Route::get('/foodMenu',[AdminController::class, 'foodMenu'])->name('foodmenu');
 Route::post('/uploadfood',[AdminController::class, 'upload']);
+Route::post('/deletefood/{id}',[AdminController::class, 'deletefood']);
+Route::get('/editfood/{id}',[AdminController::class, 'editfood']);
+Route::post('/updatefood/{id}',[AdminController::class, 'updatefood']);
+Route::post('/reservation',[AdminController::class, 'reservation']);
+Route::get('/viewreservation',[AdminController::class, 'viewreservation']);
+Route::get('/viewchef',[AdminController::class, 'viewchef']);
+Route::post('/uploadchef',[AdminController::class, 'uploadchef']);
+Route::get('/editchef/{id}',[AdminController::class, 'editchef']);
+Route::post('/deletechef/{id}',[AdminController::class, 'deletechef']);
+Route::post('/updatechef/{id}',[AdminController::class, 'updatechef']);
+Route::post('addcart/{id}',[HomeController::class, 'addcart']);
 
 Route::middleware([
     'auth:sanctum',

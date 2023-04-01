@@ -5,11 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
-    
     @include('admin.admincss')
   </head>
   <body>
@@ -46,8 +41,33 @@
                             
                         </div>
                     </div>
-                   
                 </form>
+
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach ($data as $food)
+                    <tr>
+                        <td>{{ $food->title }}</td>
+                        <td>{{ $food->price }}</td>
+                        <td>{{ $food->description }}</td>
+                        <td><img src="{{ asset('foodimage/' . $food->image) }}" alt="" class="img img-fluid"></td>
+                        
+                        <td>
+                            <form action="{{ url('deletefood', $food->id) }}" method="POST">
+                            <a class="btn btn-light p-2 m-1" href="{{ url('editfood', $food->id) }}">Edit</a>
+                            @csrf
+                            <input class="btn btn-light p-2 m-1" type="submit" value="Delet">
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
 
